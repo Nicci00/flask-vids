@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Videos</title>
+
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="static/skeleton/css/normalize.css">
+  <link rel="stylesheet" href="static/skeleton/css/skeleton.css">
+
+  <link rel="stylesheet" href="static/css/videos.css">
+
+  <link rel="icon" type="image/png" href="static/img/favicon.png">
+
+  <style type="text/css">
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="row">
+
+  <h1>Videos</h1>
+  <div class="color-bar"></div>
+
+</div>
+
+<div class="row">
+  <div class="six columns">
+
+    <h5> Upload a video</h5>
+    <form action="" method="post" enctype="multipart/form-data">
+
+    <div class="row">
+      <input type="file" name="file" id="file">
+      <h6>Allowed file types: .webm, .mp4, .ogv. Max file size: 80 MB</h6>
+    </div>
+
+    <div class="row">
+      <input class="button-primary" type="submit" value="Submit">
+    </div>
+    </form>
+  </div>
+</div>
+
+<h4>Currently serving {{files|count}} videos</h4>
+<hr />
+{%for f in files%}
+  <div class="row video">
+    <a href="{{url_for('static', filename=f[0], _external=True)}}">
+      <img  class="thumb" src="{{url_for('static', filename=f[1] , _external=True)}}">
+      <h5 class="vert">{{f[0][7:]}}</h5>
+    </a>
+  </div>
+  <hr />
+{%endfor%}
+
+
+</div> <!--Container-->
+
+</body>
+
+</html>
+

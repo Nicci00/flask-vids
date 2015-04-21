@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta encoding="UTF-8" />
+	<title>Admin Panel</title>
+	<style type="text/css">
+
+	body {
+		font-family: sans-serif;
+		margin: 2%;
+	}
+
+	img {
+		height: 120px;
+	}
+
+	</style>
+</head>
+
+<body>
+{%if logged%}
+<h1>Current Videos: </h1>
+	{%for v in videos %}
+	<p>
+	<img  class="thumb" src="{{url_for('static', filename="img/video-thumb/" + v + ".jpg" , _external=True)}}">
+	{{v}}
+	
+	</p>
+	{%endfor%}
+{% else %}
+	<h2> Not logged in </h2>
+	{%endif%}
+
+<form action="logout" method="post">
+	<input type="submit" value="Logout">
+</form>
+
+</body>
+
+</html>
