@@ -91,6 +91,17 @@ def videos():
 	else:
 		return render_template('videos.html', files=list_videos())
 
+@app.route('/v')
+def video_page():
+	video = request.args.get('v')
+
+	if not video:
+		return redirect('/')
+
+	mime = 'video/ogv'
+
+	return render_template('video.html', video=video, mime=mime)
+
 @app.errorhandler(404)
 def page_not_found(e):
 	return render_template('404.html'),404

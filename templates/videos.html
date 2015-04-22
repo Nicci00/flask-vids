@@ -59,7 +59,7 @@
 <hr />
 {%for f in files%}
   <div class="row video">
-    <a href="{{url_for('static', filename=f[0], _external=True)}}">
+    <a href="v?v={{f[0][7:]}}">
       <img  class="thumb" src="{{url_for('static', filename=f[1] , _external=True)}}">
       <h5 class="vert">{{f[0][7:]}}</h5>
     </a>
