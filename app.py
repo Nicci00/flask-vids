@@ -98,7 +98,7 @@ def video_page():
 	if not video:
 		return redirect('/')
 
-	mime = 'video/ogv'
+	mime = magic.from_file(os.path.join(app.config['upload_dir'], video), mime=True)
 
 	return render_template('video.html', video=video, mime=mime)
 
