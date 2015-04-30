@@ -6,3 +6,5 @@ Requeriments:
 - Flask
 - ffvideo
 - python-magic
+
+License: WTFPL
