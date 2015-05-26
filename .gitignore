@@ -1,0 +1,13 @@
+*.pyc
+*.db
+*.log
+
+config.ini
+
+static/fonts/
+static/css/font-*
+static/img/
+static/skeleton/
+static/videos/
+
+tmp/

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>{{video.title}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" 
+    type="text/css">
+
+  <link rel="stylesheet" href="static/skeleton/css/normalize.css">
+  <link rel="stylesheet" href="static/skeleton/css/skeleton.css">
+
+  <link rel="icon" type="image/png" href="static/img/favicon.png">
+
+  <style type="text/css">
+    video {
+      padding-right: auto !important;
+      padding-left: auto !important;
+    }
+  </style>
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="row">
+  <h2>{{video.title}}</h2>
+</div>
+<div class="row">
+  <video controls="controls" autoplay="autoplay" loop="loop">
+	 <source src="{{url_for('static', filename= 'videos/' + video.file_name)}}"/>
+  </video>
+</div>
+{{video.description}} <br />
+{{video.file_md5_hash}} <br />
+{{video.uploader_ip}} <br />
+
+</div>
+
+</body>
+
+</html>

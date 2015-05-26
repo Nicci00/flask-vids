@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Videos</title>
+  
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" 
+    type="text/css">
+
+  <link rel="stylesheet" href="static/skeleton/css/normalize.css">
+  <link rel="stylesheet" href="static/skeleton/css/skeleton.css">
+
+  <link rel="stylesheet" href="static/css/videos.css">
+
+  <link rel="icon" type="image/png" href="static/img/favicon.png">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="row">
+
+  <h1>Videos</h1>
+  <div class="color-bar"></div>
+
+</div>
+
+<div class="row">
+  <div class="six columns">
+
+    <h5> Upload a video</h5>
+    <form action="" method="post" enctype="multipart/form-data">
+
+    <div class="row">
+      <h6>Title</h6>
+      <input name="title" type="text" maxlength="80" size="60" />
+    </div>
+
+    <div class="row">
+      <h6>Description</h6>
+      <textarea name="description" cols="60"></textarea>
+    </div>
+
+    <div class="row">
+      <input type="file" name="file" id="file" accept="video/webm, video/mp4, video/ogg">
+      <h6>Allowed file types: .webm, .mp4, .ogv. Max file size: 80 MB</h6>
+
+      <input class="button-primary" type="submit" value="Submit">
+    </div>
+    </form>
+  </div>
+</div>
+
+<h4>Currently serving {{videos|count}} videos</h4>
+<hr />
+{%for v in videos%}
+  <div class="row video">
+    <a href="/v?v={{v.id}}">
+      <img 
+        class="thumb" 
+        src="{{url_for('static', filename="img/video-thumb/%s.jpg" % v.file_name)}}">
+      <h5 class="vert">{{v.title}}</h5>
+    </a>
+  </div>
+  <hr />
+{%endfor%}
+
+
+</div> <!--Container-->
+
+</body>
+
+</html>
+
