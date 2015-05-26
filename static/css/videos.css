@@ -14,7 +14,12 @@ div.video img:hover {
   height: 14rem;
   display: inline-block;
 }
+<<<<<<< HEAD
  musichorrbiv.color-bar {
+=======
+
+div.color-bar {
+>>>>>>> 8b48ea3c1c624ee3ba7982fe20a880a9bbddf870
   width: 100%;
   height: 0.75em;
   display: inline-block;

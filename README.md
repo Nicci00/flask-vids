@@ -1,10 +1,16 @@
 # flask-vids
-Really crude video hosting made with Flask
+~~Really crude~~ Minimalist video hosting made with Flask
+
+Has:
+- Comments
+- Title
+- Video (ofc)
 
 Requeriments:
 - Python 2.7
 - Flask
 - ffvideo
 - python-magic
+- Sqlite3
 
 License: WTFPL

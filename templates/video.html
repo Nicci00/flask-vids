@@ -4,17 +4,25 @@
 <head>
 	<meta charset="utf-8">
 
+<<<<<<< HEAD
 	<title>{{video.title}}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" 
     type="text/css">
+=======
+	<title>{{video}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+>>>>>>> 8b48ea3c1c624ee3ba7982fe20a880a9bbddf870
 
   <link rel="stylesheet" href="static/skeleton/css/normalize.css">
   <link rel="stylesheet" href="static/skeleton/css/skeleton.css">
 
   <link rel="icon" type="image/png" href="static/img/favicon.png">
 
+<<<<<<< HEAD
   <style type="text/css">
     video {
       padding-right: auto !important;
@@ -22,12 +30,15 @@
     }
   </style>
 
+=======
+>>>>>>> 8b48ea3c1c624ee3ba7982fe20a880a9bbddf870
 </head>
 <body>
 
 <div class="container">
 
 <div class="row">
+<<<<<<< HEAD
   <h2>{{video.title}}</h2>
 </div>
 <div class="row">
@@ -38,6 +49,15 @@
 {{video.description}} <br />
 {{video.file_md5_hash}} <br />
 {{video.uploader_ip}} <br />
+=======
+  <h2>{{video}}</h2>
+</div>
+<div class="row">
+  <video controls="controls" autoplay="autoplay" loop="loop">
+	 <source src="{{url_for('static', filename= 'videos/' + video)}}" type="{{mime}}"/>
+  </video>
+</div>
+>>>>>>> 8b48ea3c1c624ee3ba7982fe20a880a9bbddf870
 
 </div>
 
