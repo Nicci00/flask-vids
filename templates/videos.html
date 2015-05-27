@@ -11,12 +11,8 @@
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<<<<<<< HEAD
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" 
     type="text/css">
-=======
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
->>>>>>> 8b48ea3c1c624ee3ba7982fe20a880a9bbddf870
 
   <link rel="stylesheet" href="static/skeleton/css/normalize.css">
   <link rel="stylesheet" href="static/skeleton/css/skeleton.css">
@@ -45,7 +41,6 @@
     <form action="" method="post" enctype="multipart/form-data">
 
     <div class="row">
-<<<<<<< HEAD
       <h6>Title</h6>
       <input name="title" type="text" maxlength="80" size="60" />
     </div>
@@ -59,20 +54,12 @@
       <input type="file" name="file" id="file" accept="video/webm, video/mp4, video/ogg">
       <h6>Allowed file types: .webm, .mp4, .ogv. Max file size: 80 MB</h6>
 
-=======
-      <input type="file" name="file" id="file">
-      <h6>Allowed file types: .webm, .mp4, .ogv. Max file size: 80 MB</h6>
-    </div>
-
-    <div class="row">
->>>>>>> 8b48ea3c1c624ee3ba7982fe20a880a9bbddf870
       <input class="button-primary" type="submit" value="Submit">
     </div>
     </form>
   </div>
 </div>
 
-<<<<<<< HEAD
 <h4>Currently serving {{videos|count}} videos</h4>
 <hr />
 {%for v in videos%}
@@ -82,15 +69,6 @@
         class="thumb" 
         src="{{url_for('static', filename="img/video-thumb/%s.jpg" % v.file_name)}}">
       <h5 class="vert">{{v.title}}</h5>
-=======
-<h4>Currently serving {{files|count}} videos</h4>
-<hr />
-{%for f in files%}
-  <div class="row video">
-    <a href="v?v={{f[0][7:]}}">
-      <img  class="thumb" src="{{url_for('static', filename=f[1] , _external=True)}}">
-      <h5 class="vert">{{f[0][7:]}}</h5>
->>>>>>> 8b48ea3c1c624ee3ba7982fe20a880a9bbddf870
     </a>
   </div>
   <hr />
