@@ -10,10 +10,10 @@
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" 
     type="text/css">
 
-  <link rel="stylesheet" href="static/skeleton/css/normalize.css">
-  <link rel="stylesheet" href="static/skeleton/css/skeleton.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='skeleton/css/normalize.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='skeleton/css/skeleton.css')}}">
 
-  <link rel="icon" type="image/png" href="static/img/favicon.png">
+  <link rel="icon" type="image/png" href="{{url_for('static', filename='img/favicon.png')}}">
 
   <style type="text/css">
     video {
@@ -37,7 +37,6 @@
 </div>
 <div class="row">
 <h4>{{video.description}}</h4>
-{{video.file_md5_hash}}
 </div>
 </div>
 

@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 from __future__ import print_function
 
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, session
 from flask.ext.sqlalchemy import SQLAlchemy
 from werkzeug import secure_filename
 from werkzeug.contrib.fixers import ProxyFix
@@ -29,11 +29,13 @@ ProxyFix(app.wsgi_app)
 parser = SafeConfigParser()
 parser.read('config.ini')
 
+app.secret_key = parser.get('application', 'key')
+
 app.config['upload_dir'] = parser.get('application', 'upload_dir')
 app.config['allowed_mime'] = set(['video/webm','video/mp4','video/ogg'])
 app.config['thumbs_dir'] = parser.get('application', 'thumbs_dir')
 app.config['MAX_CONTENT_LENGTH'] = int(parser.get('application', 'max_file_size'))* 1024 * 1024
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///videos.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///%s' % parser.get('database', 'db_name')
 
 db = SQLAlchemy(app)
 
@@ -102,20 +104,34 @@ def videos():
 	else:
 		return render_template('videos.html', videos=Video.query.all())
 
-@app.route('/v')
-def video_page():
-	id = request.args.get('v')
-	
-	if not id:
-		return redirect('/')
 
+@app.route('/video/<int:id>')
+def show(id):
 	video = Video.query.get_or_404(id)
-
 	return render_template('video.html', video=video)
+
 
 @app.route('/tos')
 def tos():
 	return render_template('tos.html')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def admin_login():
+	if request.method == 'POST':
+		if request.form['user'] == parser.get('admin', 'username') \
+			and request.form['password'] == parser.get('admin','password'):
+			render_template('admin.html', videos=Video.query.all())
+		else:
+			abort(403)
+	else:
+		return render_template('login.html')
+
+@app.route('/admin', methods=['GET', 'POST'])
+def admin_page():
+	pass
+
+
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -124,7 +140,7 @@ def page_not_found(e):
 
 @app.errorhandler(500)
 def internal_server_error(e):
-	return render_template('500.html', admin_email=parser.get("other", "admin_email")),500
+	return render_template('500.html', admin_email=parser.get("admin", "admin_email")),500
 
 
 @app.errorhandler(413)

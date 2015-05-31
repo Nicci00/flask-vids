@@ -6,21 +6,15 @@
   <meta charset="utf-8">
 
   <title>Videos</title>
-  
-  <meta name="description" content="">
-  <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" 
-    type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
-  <link rel="stylesheet" href="static/skeleton/css/normalize.css">
-  <link rel="stylesheet" href="static/skeleton/css/skeleton.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='skeleton/css/normalize.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='skeleton/css/skeleton.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/videos.css')}}">
 
-  <link rel="stylesheet" href="static/css/videos.css">
-
-  <link rel="icon" type="image/png" href="static/img/favicon.png">
-
+  <link rel="icon" type="image/png" href="{{url_for('static', filename='img/favicon.png')}}">
 </head>
 
 <body>
@@ -28,10 +22,8 @@
 <div class="container">
 
 <div class="row">
-
   <h1>Videos</h1>
   <div class="color-bar"></div>
-
 </div>
 
 <div class="row">
@@ -53,7 +45,6 @@
     <div class="row">
       <input type="file" name="file" id="file" accept="video/webm, video/mp4, video/ogg">
       <h6>Allowed file types: .webm, .mp4, .ogv. Max file size: 80 MB</h6>
-
       <input class="button-primary" type="submit" value="Submit">
     </div>
     </form>
@@ -64,7 +55,7 @@
 <hr />
 {%for v in videos%}
   <div class="row video">
-    <a href="/v?v={{v.id}}">
+    <a href="/video/{{v.id}}">
       <img 
         class="thumb" 
         src="{{url_for('static', filename="img/video-thumb/%s.jpg" % v.file_name)}}">
@@ -74,6 +65,9 @@
   <hr />
 {%endfor%}
 
+<div class="row footer">
+<a href="https://github.com/nicci/flask-vids">Github</a> | <a href="/tos">Terms of service</a>
+</div>
 
 </div> <!--Container-->
 

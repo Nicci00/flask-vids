@@ -1,76 +1,63 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-	<meta encoding='utf-8' />
-	<title>Log In</title>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	<style type="text/css">
-		@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
-		body {
-			font-family: 'Lato', sans-serif;
-			margin: 3%;
-			background-color: #7E8AA4;
-			font-size: 1.5em;
-		}
+  <meta charset="utf-8">
 
-		div.login-form{
-			border: 8px solid #FF9900;
-			border-radius: 20px;
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-			padding: 2%;
-			width: 25%;
-			margin: auto;
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
-			text-align: center;
-			color: #26324A;
+  <link rel="stylesheet" href="{{url_for('static', filename='skeleton/css/normalize.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='skeleton/css/skeleton.css')}}">
 
-			background-color: white;
+  <link rel="icon" type="image/png" href="{{url_for('static', filename='img/favicon.png')}}">
 
-		}
+  <style type="text/css">
+  
+  body {
+    margin: 1.2%;
+  }
 
-		h1.title {
-			font-weight: bold;
-			font-size: 3rem;
-		}
+  div.honey {
+    width: 55%;
+    height: 0.75em;
+    display: inline-block;
+    background-image: -moz-linear-gradient(right, #33C3F0 0%, #DFFC4D 100%); 
+    background-image: linear-gradient(to left, #33C3F0 0%, #DFFC4D 100%);
+    margin-left: 0% !important;
+    margin-bottom: 3rem;
+  }
+  </style>
 
-		span.fa {
-			width: 2em;
-			text-align: center;
-			padding: auto;
-			vertical-align: middle;
-
-		}
-
-		input.textbox{
-			display: inline-block;
-			border-color: #26324A;
-			border-width: 3px;
-			border-style: solid;
-		}
-
-	</style>
 </head>
-
-
 <body>
-<div class="login-form">
-	<h1 class ="title">Login</h1>
-	<form action="" method="post">
-		<p>
-			<span class="fa fa-user"></span><input class="textbox"type="text" name="user"/>
-		</p>
-		<p>
-			<span class="fa fa-key"></span><input class ="textbox" type="password" name="password" />
-		</p>
-		<p>
-			<input class="nanairo-button"type="submit" value="Let me in!">
-		</p>
 
-	</form>
+<div class="container">
+
+<div class="row">
+  <h2>Login</h2>
 </div>
+
+<div class="row honey"></div>
+
+<div class="row">
+<form action="" method="post">
+  <p>
+    <input class="textbox"type="text" name="user" placeholder="user" size="25" />
+  </p>
+  <p>
+    <input class ="textbox" type="password" name="password" placeholder="password" size="25" />
+  </p>
+  <p>
+    <input class="button-primary" type="submit" value="Enter"></input>
+  </p>
+</form>
+</div>
+
+</div> <!--container-->
+
 </body>
-	
+
 </html>
-
-
-

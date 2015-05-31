@@ -9,11 +9,10 @@
 
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
-  <link rel="stylesheet" href="static/skeleton/css/normalize.css">
-  <link rel="stylesheet" href="static/skeleton/css/skeleton.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='skeleton/css/normalize.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='skeleton/css/skeleton.css')}}">
 
-  <link rel="icon" type="image/png" href="static/img/favicon.png">
-
+  <link rel="icon" type="image/png" href="{{url_for('static', filename='static/img/favicon.png')}}">
 </head>
 <body>
 
@@ -28,7 +27,7 @@
 
   <ul>
     <li> Racism, homophobia, grossly offensive content.</li>
-    <li> Child/teen 'modeling'.</li>
+    <li> Child/teen "modeling".</li>
     <li> Gore, animal abuse.</li>
     <li> Hardcore pornography.</li>
   </ul>
