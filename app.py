@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 from __future__ import print_function
 
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, abort
 from flask.ext.sqlalchemy import SQLAlchemy
 from werkzeug import secure_filename
 from werkzeug.contrib.fixers import ProxyFix
@@ -121,17 +121,50 @@ def admin_login():
 	if request.method == 'POST':
 		if request.form['user'] == parser.get('admin', 'username') \
 			and request.form['password'] == parser.get('admin','password'):
-			render_template('admin.html', videos=Video.query.all())
+			session['logged'] = True
+			return redirect('/admin')
 		else:
 			abort(403)
 	else:
+
 		return render_template('login.html')
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin_page():
-	pass
 
+	try:
+		logged = session['logged']
+	except KeyError:
+		abort(403)
 
+	if request.method == 'POST':
+		return redirect('/admin')
+	else:
+		return render_template('admin.html', logged=logged, videos=Video.query.all())
+
+@app.route('/logout')
+def admin_logout():
+	session.pop('logged', None)
+	return redirect('/login')
+
+@app.route('/delete')
+def delete_vid():
+	try:
+		logged = session['logged']
+	except KeyError:
+		abort(403)
+
+	try:
+		id = request.args['v']
+		
+		vid = Video.query.get(id)
+		db.session.delete(vid)
+		db.session.commit()
+	except Exception, e:
+		print(e)
+		abort(500)
+
+	return redirect('/admin')
 
 @app.errorhandler(404)
 def page_not_found(e):

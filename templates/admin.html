@@ -23,18 +23,19 @@
 <h1>Current Videos: </h1>
 	{%for v in videos %}
 	<p>
-	<img  class="thumb" src="{{url_for('static', filename="img/video-thumb/" + v + ".jpg" , _external=True)}}">
-	{{v}}
-	
+	<img  class="thumb" src="{{url_for('static', filename="img/video-thumb/" + v.file_name + ".jpg" , _external=True)}}">
 	</p>
+	<p>{{v.file_name}}</p>
+	<p>{{v.file_md5_hash}}</p>
+	<p>{{v.uploader_ip}}</p>
+	<a href="/delete?v={{v.id}}">delete</a>
 	{%endfor%}
 {% else %}
 	<h2> Not logged in </h2>
 	{%endif%}
 
-<form action="logout" method="post">
-	<input type="submit" value="Logout">
-</form>
+
+<a class="button" href="/logout">Log out</a>
 
 </body>
 
