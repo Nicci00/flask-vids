@@ -61,7 +61,6 @@ def videos():
 
 		if mime not in app.config['allowed_mime']:
 			os.remove(temp_file)
-			print("Error, file not allowed")
 			return "<script> alert('File type not allowed!'); \
 				window.location.replace('');</script>", 415
 
@@ -77,15 +76,12 @@ def videos():
 		description = None
 		ip = None
 
-		print(title)
-		print(description)
-
-		if request.form["title"] is None:
+		if not request.form["title"]:
 			title = parser.get("application","default_title")
 		else:
 			title = request.form["title"]
 
-		if request.form["description"] is None:
+		if not request.form["description"]:
 			description = parser.get("application","default_description")
 		else:
 			description = request.form["description"]
@@ -93,7 +89,7 @@ def videos():
 		#nginx IP fuckery
 
 		if parser.getboolean("application", "dev"):
-			uploader_ip = request.remote_addr
+			ip = request.remote_addr
 		else:
 			ip = request.headers.getlist("X-Forwarded-For")[0]
 
@@ -129,6 +125,7 @@ def admin_login():
 
 		return render_template('login.html')
 
+
 @app.route('/admin', methods=['GET', 'POST'])
 def admin_page():
 
@@ -142,10 +139,16 @@ def admin_page():
 	else:
 		return render_template('admin.html', logged=logged, videos=Video.query.all())
 
+
 @app.route('/logout')
 def admin_logout():
-	session.pop('logged', None)
-	return redirect('/login')
+	try:
+		if session['logged']:
+			session.pop('logged', None)
+			return redirect('/')
+	except KeyError:
+		return "Not logged"
+		
 
 @app.route('/delete')
 def delete_vid():
@@ -166,6 +169,7 @@ def delete_vid():
 
 	return redirect('/admin')
 
+
 @app.errorhandler(404)
 def page_not_found(e):
 	return render_template('404.html'),404
@@ -181,6 +185,7 @@ def request_entity_too_large(e):
 	logging.warning(request.remote_addr + " atempted to upload file larger than allowed")
 	return '''<script> alert("I-it won't f-fit in! - File too large");
 			window.location.replace("");</script>''',413
+
 
 #misc funcs
 def new_video(title, file_name, uploader_ip, file_hash, description):
