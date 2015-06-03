@@ -16,9 +16,18 @@
   <link rel="icon" type="image/png" href="{{url_for('static', filename='img/favicon.png')}}">
 
   <style type="text/css">
+    
+    body {
+      font-family: 'Raleway', sans-serif;
+    }
+
     video {
-      padding-right: auto !important;
-      padding-left: auto !important;
+      max-height: 70%;
+      text-align: center;
+    }
+
+    .descript {
+      font-size: 1.4em;
     }
   </style>
 
@@ -36,7 +45,7 @@
   </video>
 </div>
 <div class="row">
-<h4>{{video.description}}</h4>
+<p class="descript">{{video.description}}</p>
 </div>
 </div>
 
