@@ -161,8 +161,12 @@ def delete_vid():
 		id = request.args['v']
 		
 		vid = Video.query.get(id)
+		
 		db.session.delete(vid)
+
 		os.remove(os.path.join(app.config['upload_dir'], vid.file_name))
+		os.remove(os.path.join(app.config['thumbs_dir'], vid.file_name + '.jpg'))
+
 		db.session.commit()
 	except Exception, e:
 		print(e)
