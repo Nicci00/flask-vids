@@ -252,5 +252,5 @@ class Video(db.Model):
 
 if __name__ == '__main__':
 
-    app.run(debug=parser.getboolean("application", "dev"), host='0.0.0.0')
+    app.run(debug=parser.getboolean("application", "dev"))
     
