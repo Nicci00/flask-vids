@@ -169,7 +169,7 @@ def delete_vid():
 
 		db.session.commit()
 	except Exception, e:
-		print(e)
+		logging.error(e)
 		abort(500)
 
 	return redirect('/admin')
@@ -213,6 +213,7 @@ def new_video(title, file_name, uploader_ip, file_hash, description):
 		db.session.commit()
 
 	except Exception, e:
+		logging.error(e)
 		abort(500)
 
 
