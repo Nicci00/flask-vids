@@ -109,7 +109,7 @@ def show(id):
 
 @app.route('/tos')
 def tos():
-	return render_template('tos.html')
+	return render_template('tos.html', admin_email = parser.get('admin', 'admin_email'))
 
 
 @app.route('/login', methods=['GET', 'POST'])
