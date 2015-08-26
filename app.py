@@ -77,7 +77,7 @@ def videos():
 		ip = None
 
 		if not request.form["title"]:
-			title = parser.get("application","default_title")
+			title = file.filename
 		else:
 			title = request.form["title"]
 
@@ -249,7 +249,6 @@ class Video(db.Model):
 
 	def __repr__(self):
 		return "<Video %s>" % self.file_name
-
 
 if __name__ == '__main__':
 

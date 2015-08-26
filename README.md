@@ -12,5 +12,7 @@ Requeriments:
 - ffvideo
 - python-magic
 - Sqlite3
+- flask-sqlalchemy
+- pillow
 
 License: WTFPL
