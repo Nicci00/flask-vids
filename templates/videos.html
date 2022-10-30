@@ -58,7 +58,7 @@
     <a href="/video/{{v.id}}">
       <img 
         class="thumb" 
-        src="{{url_for('static', filename="img/video-thumb/%s.jpg" % v.file_name)}}">
+        src="{{url_for('static', filename=('uploads/thumbs/'+v.file_name+'.jpg'))}}">
       <h5 class="vert">{{v.title}}</h5>
     </a>
   </div>

@@ -41,11 +41,15 @@
 </div>
 <div class="row">
   <video controls="controls" autoplay="autoplay" loop="loop">
-	 <source src="{{url_for('static', filename= 'videos/' + video.file_name)}}"/>
+	 <source src="{{url_for('static', filename=('uploads/videos/' + video.file_name))}}"/>
   </video>
 </div>
 <div class="row">
 <p class="descript">{{video.description}}</p>
+{{video.file_name}}
+{{video.file_md5_hash}}
+{{video.uploader_ip}}
+
 </div>
 </div>
 

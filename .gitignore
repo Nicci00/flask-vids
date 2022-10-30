@@ -2,6 +2,8 @@
 *.db
 *.log
 
+**/.DS_Store
+
 config.ini
 
 static/fonts/
@@ -9,5 +11,7 @@ static/css/font-*
 static/img/
 static/skeleton/
 static/videos/
+static/uploads/*
 
 tmp/
+venv/

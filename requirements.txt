@@ -1,0 +1,5 @@
+flask
+av
+python-magic
+flask-sqlalchemy
+pillow
